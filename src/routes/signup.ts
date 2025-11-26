@@ -1,0 +1,6 @@
+const { Router } = require('express');
+import type { Request, Response } from 'express';
+
+export const signup = Router();
+
+signup.get('/', (req: Request, res: Response) => res.render('signup'));
