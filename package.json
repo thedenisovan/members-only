@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "cp -r ./src/views ./dist/src && tsc",
+    "build": "npx tsc && cp -r ./src/views ./dist/src && cp -r ./src/public/ ./dist/src",
     "start": "node dist/src/index.js",
     "dev": "nodemon src/index.ts"
   },
