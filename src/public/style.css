@@ -1,19 +1,87 @@
+:root {
+  --indigo-dark: #4f46e5;
+  --indigo-light: #9333ea;
+  --lightest-gray: #f8fafc;
+  --light-gray: #f1f5f9;
+}
+
 body,
 html {
   height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+
+  background: linear-gradient(135deg, var(--lightest-gray), var(--light-gray));
+}
+
+.header {
+  background: linear-gradient(90deg, var(--indigo-dark), var(--indigo-light));
+  min-height: 80px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & h1 {
+    color: white;
+    font-weight: 300;
+  }
 }
 
 .form {
   display: flex;
   flex-direction: column;
-  margin: auto;
+  margin: 6rem auto;
+  padding: 2rem;
 
-  max-width: 300px;
+  background-color: #fff;
+  border-radius: 15px;
+  border: 1px solid rgb(202, 199, 199);
+  min-width: 300px;
+  max-width: 500px;
+
+  & h4 {
+    color: var(--indigo-dark);
+    font-weight: 100;
+    font-size: 1.3rem;
+  }
+
+  & input {
+    border: none;
+    background-color: var(--light-gray);
+    height: 2.3rem;
+    border-radius: 10px;
+    padding-left: 1rem;
+  }
+
+  & label {
+    margin-top: 1.3rem;
+    margin-bottom: 0.2rem;
+  }
+
+  & button {
+    margin-top: 1.5rem;
+    color: white;
+    background-color: black;
+    border: none;
+    border-radius: 10px;
+    height: 2.3rem;
+  }
+}
+
+.form-card-p {
+  color: rgb(88, 88, 88);
+  font-size: 1.3rem;
 }
 
 .call-to-action {
   text-align: center;
-  margin: auto;
+  margin: 2rem auto 0 auto;
+  color: rgb(88, 88, 88);
+
+  & a {
+    text-decoration: none;
+    color: var(--indigo-dark);
+  }
 }
 
 /* 1. Use a more-intuitive box-sizing model */
