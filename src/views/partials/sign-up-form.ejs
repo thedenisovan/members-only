@@ -1,1 +1,69 @@
-<form method="post" action="/signup"></form>
+<form method="POST" action="/signup" class="form">
+  <h4>Sign Up</h4>
+  <p class="form-card-p">Create your account to get started</p>
+  <div class="name-container">
+    <div class="name-group">
+      <label for="first_name">First Name</label>
+      <input
+        type="text"
+        id="first_name"
+        name="first_name"
+        required
+        placeholder="John"
+      />
+    </div>
+    <div class="name-group">
+      <label for="last_name">Last Name</label>
+      <input
+        type="text"
+        id="last_name"
+        name="last_name"
+        required
+        placeholder="Doe"
+      />
+    </div>
+  </div>
+
+  <label for="user_email">Email</label>
+  <input
+    type="email"
+    name="user_email"
+    id="user_email"
+    required
+    placeholder="your@email.com"
+  />
+
+  <label for="user_password">Password</label>
+  <input
+    type="password"
+    name="user_password"
+    id="user_password"
+    required
+    placeholder="Enter your password"
+  />
+
+  <label for="password_confirmation">Confirm Password</label>
+  <input
+    type="password"
+    name="password_confirmation"
+    id="password_confirmation"
+    required
+    placeholder="Confirm your password"
+  />
+
+  <label id="passphrase-label" for="admin_pass"
+    >Secret Passphrase
+    <p>(supreme god in Norse mythology)</p></label
+  >
+  <input
+    type="text"
+    name="admin_pass"
+    id="admin_pass"
+    required
+    placeholder="Optional - for admin access"
+  />
+  <button class="action-button">Create Account</button>
+  <div class="call-to-action">
+    <p>already have an account? <a class="action-link" href="/">Sign in</a></p>
+  </div>
+</form>
