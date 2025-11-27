@@ -1,4 +1,5 @@
 import type { Request, Response, NextFunction } from 'express';
+import main from './db/populatedb';
 import { signin } from './routes/signin';
 import { signup } from './routes/signup';
 import { mainPage } from './routes/mainPage';
@@ -24,3 +25,5 @@ app.use('/mainPage', mainPage);
 app.listen(SERVER, '0.0.0.0', () => {
   console.log(`Listening on localhost:${SERVER}`);
 });
+
+// main();
