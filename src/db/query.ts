@@ -6,8 +6,8 @@ export interface NeonUsers {
   surname: string;
   email: string;
   password: string;
-  isMember: boolean;
-  isAdmin: boolean;
+  isMember: boolean | string;
+  isAdmin: boolean | string;
 }
 
 export default class DbQuery {
@@ -20,6 +20,9 @@ export default class DbQuery {
     isMember,
   }: NeonUsers) => {
     const hashedPassword = await bcrypt.hash(password, 10);
+
+    isAdmin === 'Odin' ? (isAdmin = true) : (isAdmin = false);
+    isMember === 'On' ? (isMember = true) : (isMember = false);
 
     await pool.query(
       `INSERT INTO users (name, surname, email, pass, isAdmin, isMember)
