@@ -39,20 +39,22 @@ export default async function registerUser(req: Request, res: Response) {
 
   const result = validationResult(req);
 
-  if (result.isEmpty()) {
-    DbQuery.createNewUser({
-      name,
-      surname,
-      email,
-      password,
-      isAdmin,
-      isMember,
+  try {
+    if (result.isEmpty()) {
+      DbQuery.createNewUser({
+        name,
+        surname,
+        email,
+        password,
+        isAdmin,
+        isMember,
+      });
+      return res.status(200).redirect('/');
+    }
+    return res.status(400).render('signup', {
+      errors: result.array(),
     });
-    return res.status(200).redirect('/');
+  } catch (err) {
+    res.status(400).render('/'); //TODO: replace with 404 page
   }
-
-  console.log(result.array());
-  return res.status(400).render('signup', {
-    errors: result.array(),
-  });
 }
