@@ -70,7 +70,7 @@ html {
     margin-bottom: 0.2rem;
   }
 
-  & button {
+  & .action-button {
     margin-top: 2rem;
     color: white;
     background-color: #030213;
@@ -88,7 +88,7 @@ html {
   & p {
     font-size: 1rem;
     color: rgb(83, 83, 83);
-    margin-left: 1rem;
+    margin-left: 0.4rem;
   }
 }
 
@@ -130,6 +130,49 @@ html {
 
 .action-link:hover {
   text-decoration: underline;
+}
+
+.guest-or {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & p {
+    margin: 1rem 0.5rem;
+  }
+
+  & hr {
+    width: 100%;
+  }
+}
+
+.guest-button {
+  color: black;
+  background-color: white;
+  border: 1px solid rgb(182, 182, 182);
+  border-radius: 10px;
+  height: 2.3rem;
+  transition: all 0.1s;
+  width: 100%;
+}
+
+.guest-button:hover {
+  background-color: rgb(241, 241, 241);
+  cursor: pointer;
+}
+
+.member-container {
+  background-color: var(--lightest-gray);
+  margin-top: 1rem;
+
+  display: flex;
+  align-items: center;
+
+  & input {
+    margin: 0 0.5rem;
+    accent-color: black;
+    transform: scale(1.4);
+  }
 }
 
 /* 1. Use a more-intuitive box-sizing model */

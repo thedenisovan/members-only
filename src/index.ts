@@ -1,6 +1,7 @@
 import type { Request, Response, NextFunction } from 'express';
 import { signin } from './routes/signin';
 import { signup } from './routes/signup';
+import { mainPage } from './routes/mainPage';
 const express = require('express');
 const path = require('node:path');
 require('dotenv').config();
@@ -18,6 +19,7 @@ app.set('view engine', 'ejs');
 
 app.use('/', signin);
 app.use('/signup', signup);
+app.use('/mainPage', mainPage);
 
 app.listen(SERVER, '0.0.0.0', () => {
   console.log(`Listening on localhost:${SERVER}`);
