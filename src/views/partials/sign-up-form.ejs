@@ -43,7 +43,7 @@
     name="password"
     id="user_password"
     required
-    placeholder="Enter your password"
+    placeholder="6+ chars with uppercase, number, and symbol."
     pattern="^(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{6,}$"
   />
 
@@ -68,13 +68,13 @@
 
   <label id="passphrase-label" for="admin_pass"
     >Secret Passphrase
-    <p>(supreme god in Norse mythology)</p></label
+    <p>(optional - for admin access)</p></label
   >
   <input
     type="text"
     name="isAdmin"
     id="admin_pass"
-    placeholder="Optional - for admin access"
+    placeholder="Supreme god in Norse mythology"
   />
   <button class="action-button">Create Account</button>
   <div class="call-to-action">
