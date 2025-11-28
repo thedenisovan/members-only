@@ -1,6 +1,10 @@
 <form method="POST" action="/signup" class="form">
   <h4>Sign Up</h4>
   <p class="form-card-p">Create your account to get started</p>
+
+  <% if (errors.length) { %>
+    <%- include('error-container', {errors}) %>
+  <% } %>
   <div class="name-container">
     <div class="name-group">
       <label for="first_name">First Name</label>

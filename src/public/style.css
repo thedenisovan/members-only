@@ -175,6 +175,19 @@ html {
   }
 }
 
+.error-container {
+  color: #ac1818;
+  border: 1px solid #ce1f1f;
+  padding: 1rem;
+  border-radius: 10px;
+  background-color: #ce1f1f13;
+  margin-top: 1rem;
+
+  & h4 {
+    color: #ce1f1f;
+  }
+}
+
 /* 1. Use a more-intuitive box-sizing model */
 *,
 *::before,

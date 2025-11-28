@@ -5,6 +5,6 @@ import registerUser, { validator } from '../controllers/registration';
 export const signup = Router();
 
 signup.get('/', (req: Request, res: Response) =>
-  res.status(200).render('signup')
+  res.status(200).render('signup', { errors: [] })
 );
 signup.post('/', validator, registerUser);
