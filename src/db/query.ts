@@ -6,7 +6,7 @@ export interface NeonUsers {
   name: string;
   surname: string;
   email: string;
-  password: string;
+  pass: string;
   isMember: string;
   isAdmin: string;
 }
@@ -16,11 +16,11 @@ export default class DbQuery {
     name,
     surname,
     email,
-    password,
+    pass,
     isAdmin,
     isMember,
   }: NeonUsers) => {
-    const hashedPassword = await bcrypt.hash(password, 10);
+    const hashedPassword = await bcrypt.hash(pass, 10);
 
     const adminFlag = isAdmin?.toLowerCase() === 'odin';
     const memberFlag = isMember?.toLowerCase() === 'on';
@@ -34,7 +34,7 @@ export default class DbQuery {
     );
   };
 
-  static findUser = async (email: string): Promise<QueryResultRow> => {
+  static findUser = async (email: string): Promise<NeonUsers> => {
     const { rows } = await pool.query(`SELECT * FROM users WHERE email = $1`, [
       email,
     ]);

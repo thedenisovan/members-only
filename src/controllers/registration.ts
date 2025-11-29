@@ -4,8 +4,7 @@ import DbQuery from '../db/query';
 import { validationResult } from 'express-validator';
 
 export default async function registerUser(req: Request, res: Response) {
-  const { name, surname, email, password, isAdmin, isMember }: NeonUsers =
-    req.body;
+  const { name, surname, email, pass, isAdmin, isMember }: NeonUsers = req.body;
 
   const result = validationResult(req);
 
@@ -15,7 +14,7 @@ export default async function registerUser(req: Request, res: Response) {
         name,
         surname,
         email,
-        password,
+        pass,
         isAdmin,
         isMember,
       });
