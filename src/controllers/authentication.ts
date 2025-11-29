@@ -8,23 +8,16 @@ passport.use(
   new LocalStrategy.Strategy(
     async (username: string, password: string, done: any) => {
       try {
-        const { rows } = await DbQuery.findUser(username); // Finds user with given email in db
-        const user = rows[0];
-        console.log(user + ': 0');
+        const user = await DbQuery.findUser(username); // Finds user with given email in db
         if (!user) {
-          console.log('no user: 1');
           return done(null, false, {
             message: 'Could not find user with given email.',
           });
         }
 
-        const deserializedPassword = await bcrypt.compare(
-          password,
-          user[0].pass
-        );
+        const deserializedPassword = await bcrypt.compare(password, user.pass);
 
         if (!deserializedPassword) {
-          console.log('wrong pass: 2');
           return done(null, false, { message: 'Incorrect password.' });
         }
 
@@ -36,17 +29,16 @@ passport.use(
   )
 );
 
-// passport.serializeUser((user: NeonUsers, done: any) => {
-//   done(null, user.email);
-// });
+passport.serializeUser((user: any, done: any) => {
+  done(null, user.email);
+});
 
-// passport.deserializeUser(async (username: string, done: any) => {
-//   try {
-//     const { rows } = await DbQuery.findUser(username);
-//     const user = rows[0];
+passport.deserializeUser(async (username: string, done: any) => {
+  try {
+    const user = await DbQuery.findUser(username);
 
-//     done(null, user);
-//   } catch (err) {
-//     done(err);
-//   }
-// });
+    done(null, user);
+  } catch (err) {
+    done(err);
+  }
+});

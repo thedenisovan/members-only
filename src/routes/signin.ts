@@ -1,3 +1,4 @@
+import '../controllers/authentication';
 import { Router } from 'express';
 import type { Request, Response } from 'express';
 import passport from 'passport';
@@ -10,7 +11,7 @@ signin.get('/', (req: Request, res: Response) =>
 signin.post(
   '/',
   passport.authenticate('local', {
-    successRedirect: 'mainPage',
+    successRedirect: '/mainPage',
     failureRedirect: '/',
   })
 );

@@ -25,6 +25,15 @@ app.use('/', signin);
 app.use('/signup', signup);
 app.use('/mainPage', mainPage);
 
+app.get('/log-out', (req, res, next) => {
+  req.logout((err) => {
+    if (err) {
+      return next(err);
+    }
+    res.redirect('/');
+  });
+});
+
 app.listen(SERVER, () => {
   console.log(`Listening on localhost:${SERVER}`);
 });
