@@ -1,5 +1,5 @@
 import { pool } from './pool';
-const bcrypt = require('bcryptjs');
+import bcrypt from 'bcryptjs';
 import type { QueryResultRow } from 'pg';
 
 export interface NeonUsers {

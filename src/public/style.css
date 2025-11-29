@@ -139,10 +139,12 @@ html {
 
   & p {
     margin: 1rem 0.5rem;
+    color: rgb(97, 97, 97);
   }
 
   & hr {
     width: 100%;
+    border: 1px solid rgba(128, 128, 128, 0.233);
   }
 }
 

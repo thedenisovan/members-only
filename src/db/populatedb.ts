@@ -1,7 +1,7 @@
-const { Client } = require('pg');
+import { Client } from 'pg';
 import DbQuery from './query';
-require('dotenv').config();
 import defaultUsers from '../public/defaultData';
+require('dotenv').config();
 
 export default async function main() {
   console.log('...seeding');
