@@ -9,6 +9,7 @@
     "moduleDetection": "force",
     "isolatedModules": true,
     // "verbatimModuleSyntax": true,
+    "typeRoots": ["./node_modules/@types", "./src/types"],
 
     /* Strictness */
     "strict": true,
