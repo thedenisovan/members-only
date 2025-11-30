@@ -2,7 +2,7 @@ import DbQuery from '../db/query';
 import { body } from 'express-validator';
 import bcrypt from 'bcryptjs';
 
-export const signinValidator = [
+export const loginValidator = [
   body('username').custom(async (value, { req }) => {
     const user = await DbQuery.findUser(value);
     if (!user) throw new Error('No user with given email exists.');

@@ -2,8 +2,8 @@ import '../controllers/authentication';
 import { Router } from 'express';
 import type { Request, Response, NextFunction } from 'express';
 import passport from 'passport';
-import { signinValidator } from '../validators/loginValidator';
-import { validationResult } from 'express-validator';
+import { loginValidator } from '../validators/loginValidator';
+import validatorMiddleware from '../controllers/signinValidMiddleware';
 
 export const signin = Router();
 
@@ -14,15 +14,8 @@ signin.get('/', (req: Request, res: Response) => {
 signin.post(
   '/',
   // Validates that email exists and pass is correct.
-  signinValidator,
-  (req: Request, res: Response, next: NextFunction) => {
-    const result = validationResult(req);
-
-    if (!result.isEmpty()) {
-      return res.status(400).render('signin', { errors: result.array() });
-    }
-    next();
-  },
+  loginValidator,
+  validatorMiddleware,
   passport.authenticate('local', {
     successRedirect: '/mainPage',
     failureRedirect: '/',
