@@ -13,6 +13,13 @@ import { mainPage } from './routes/mainPage';
 const pgSession = require('connect-pg-simple')(session);
 dotenv.config();
 
+// Interface extension so i can add views count to session metadata
+declare module 'express-session' {
+  interface SessionData {
+    views: number;
+  }
+}
+
 const app = express();
 const SECRET = process.env.NOT_FOR_YOU as string;
 
@@ -31,7 +38,7 @@ app.use(
     resave: false,
     saveUninitialized: false,
     cookie: {
-      maxAge: 1000 * 60 * 60 * 24 * 14, // Erases cookies after 2 weeks of inactivity
+      maxAge: 1000 * 60 * 60 * 24 * 2, // Erases session cookies after 2 days of inactivity
     },
     store: new pgSession({
       pool,
