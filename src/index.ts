@@ -3,16 +3,18 @@ import session from 'express-session';
 import passport from 'passport';
 import path from 'path';
 import dotenv from 'dotenv';
+import { pool } from './db/pool';
 
 import './controllers/authentication';
 import { signin } from './routes/signin';
 import { signup } from './routes/signup';
 import { mainPage } from './routes/mainPage';
 
+const pgSession = require('connect-pg-simple')(session);
 dotenv.config();
 
 const app = express();
-const SERVER = process.env.SERVER;
+const SECRET = process.env.NOT_FOR_YOU as string;
 
 // Paths
 const assetsPath = path.join(__dirname, 'public');
@@ -25,9 +27,16 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(
   session({
-    secret: 'cats',
+    secret: SECRET,
     resave: false,
     saveUninitialized: false,
+    cookie: {
+      maxAge: 1000 * 60 * 60 * 24 * 14, // Erases cookies after 2 weeks of inactivity
+    },
+    store: new pgSession({
+      pool,
+      tableName: 'session',
+    }),
   })
 );
 app.use(passport.initialize());
@@ -50,6 +59,6 @@ app.get('/log-out', (req, res, next) => {
 });
 
 // Start server
-app.listen(SERVER, () => {
-  console.log(`Server listening on http://localhost:${SERVER}`);
+app.listen(process.env.SERVER, () => {
+  console.log(`Server listening on http://localhost:${process.env.SERVER}`);
 });

@@ -8,7 +8,6 @@ import { validationResult } from 'express-validator';
 export const signin = Router();
 
 signin.get('/', (req: Request, res: Response) => {
-  console.log(req.session);
   res.status(200).render('signin', { errors: [] });
 });
 
