@@ -23,7 +23,7 @@ export default async function registerUser(req: Request, res: Response) {
     return res.status(400).render('signup', {
       errors: result.array(),
     });
-  } catch (err) {
-    res.status(400).render('/'); //TODO: replace with 404 page
+  } catch {
+    res.status(400).render('404');
   }
 }

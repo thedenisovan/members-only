@@ -65,6 +65,11 @@ app.get('/log-out', (req, res, next) => {
   });
 });
 
+app.get('{*splat}', (_req, res) => {
+  res.status(404);
+  res.render('404');
+});
+
 // Start server
 app.listen(process.env.SERVER, () => {
   console.log(`Server listening on http://localhost:${process.env.SERVER}`);

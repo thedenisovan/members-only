@@ -3,6 +3,9 @@
   --indigo-light: #9333ea;
   --lightest-gray: #f8fafc;
   --light-gray: #f1f5f9;
+
+  --indigo-dark-hover: #4e46e5d8;
+  --indigo-light-hover: #9233ead7;
 }
 
 body,
@@ -188,6 +191,64 @@ html {
   & h4 {
     color: #ce1f1f;
   }
+}
+
+.error-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+
+  align-items: center;
+  height: 100%;
+
+  & h2 {
+    color: var(--indigo-light);
+    font-weight: 400;
+  }
+
+  & p {
+    font-size: 1.3rem;
+    max-width: 600px;
+    text-align: center;
+    color: #030213c5;
+  }
+}
+
+.error-mark {
+  border: 10px solid var(--indigo-dark);
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  & h1 {
+    font-size: 4rem;
+    color: var(--indigo-dark);
+  }
+}
+
+.go-back-home {
+  border-radius: 5px;
+  height: 2rem;
+  width: 10rem;
+
+  border: none;
+  background: linear-gradient(90deg, var(--indigo-dark), var(--indigo-light));
+  color: white;
+
+  cursor: pointer;
+}
+
+.go-back-home:hover {
+  background: linear-gradient(
+    90deg,
+    var(--indigo-dark-hover),
+    var(--indigo-light-hover)
+  );
 }
 
 /* 1. Use a more-intuitive box-sizing model */
