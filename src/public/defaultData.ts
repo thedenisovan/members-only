@@ -1,4 +1,4 @@
-import { NeonUsers } from '../db/query';
+import { NeonUsers, NeonComments } from '../db/query';
 
 const defaultUsers: NeonUsers[] = [
   {
@@ -59,4 +59,56 @@ const defaultUsers: NeonUsers[] = [
   },
 ];
 
+const defaultComments: NeonComments[] = [
+  {
+    title: 'First Impression',
+    message: 'Hogwarts looks amazing, i will never return to London!',
+    creation_time: '2000-01-09',
+    creator_id: 1,
+  },
+  {
+    title: 'Harry Update',
+    message: 'Ready for another year of chaos at Hogwarts.',
+    creation_time: '2000-01-10',
+    creator_id: 1,
+  },
+  {
+    title: 'Hagrid Thought',
+    message: 'Got a new creature today — probably dangerous.',
+    creation_time: '2000-01-11',
+    creator_id: 6,
+  },
+  {
+    title: 'Dumbledore Note',
+    message: 'Sometimes the smallest choices shift destiny.',
+    creation_time: '2000-01-12',
+    creator_id: 7,
+  },
+  {
+    title: 'Vader Log',
+    message: 'The Empire requires discipline. Don’t test me.',
+    creation_time: '2000-01-13',
+    creator_id: 8,
+  },
+  {
+    title: 'Rick Entry',
+    message: 'I upgraded the portal gun again. Probably broke five timelines.',
+    creation_time: '2000-01-14',
+    creator_id: 9,
+  },
+  {
+    title: 'Hermione Report',
+    message: 'Research complete. Now let’s fix everyone else’s mistakes.',
+    creation_time: '2000-01-15',
+    creator_id: 10,
+  },
+  {
+    title: 'Ron Comment',
+    message: 'If anything goes wrong, it wasn’t my fault this time.',
+    creation_time: '2000-01-16',
+    creator_id: 11,
+  },
+];
+
 export default defaultUsers;
+export { defaultComments };

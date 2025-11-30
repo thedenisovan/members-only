@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { NextFunction } from 'express';
 import session from 'express-session';
 import passport from 'passport';
 import path from 'path';
@@ -13,10 +13,15 @@ import { mainPage } from './routes/mainPage';
 const pgSession = require('connect-pg-simple')(session);
 dotenv.config();
 
-// Interface extension so i can add views count to session metadata
+// Interface extensions so i customize session and req metadata via ts
 declare module 'express-session' {
   interface SessionData {
     views: number;
+  }
+}
+declare module 'express-serve-static-core' {
+  interface Request {
+    myName: string;
   }
 }
 

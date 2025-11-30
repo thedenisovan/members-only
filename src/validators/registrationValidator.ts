@@ -6,12 +6,12 @@ export const registrationValidator = [
     .trim()
     .notEmpty()
     .isAlpha()
-    .withMessage('First name must contains only alphabet characters.'),
+    .withMessage('First name must contain only alphabet characters.'),
   body('surname')
     .trim()
     .notEmpty()
     .isAlpha()
-    .withMessage('Surname must contains only alphabet characters.'),
+    .withMessage('Surname must contain only alphabet characters.'),
   body('email')
     .trim()
     .isEmail()
@@ -20,13 +20,14 @@ export const registrationValidator = [
       if (user) throw new Error('E-mail already in use.');
     }),
 
-  body('password')
+  body('pass')
     .trim()
-    .matches(/^(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{6,}$/),
+    .matches(/^(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{6,}$/)
+    .withMessage('6+ chars with uppercase, number and symbol.'),
   body('passwordConfirm')
     .trim()
-    .custom((value, { req }) => {
-      const result = value === req.body.password;
+    .custom(async (value, { req }) => {
+      const result = value === req.body.pass;
       if (!result) throw new Error('Passwords did not match.');
     }),
 ];
