@@ -10,15 +10,13 @@ passport.use(
       try {
         const user: NeonUsers = await DbQuery.findUser(username); // Finds user with given email in db
         if (!user) {
-          return done(null, false, {
-            message: 'Could not find user with given email.',
-          });
+          return done(null, false);
         }
 
         const deserializedPassword = await bcrypt.compare(password, user.pass);
 
         if (!deserializedPassword) {
-          return done(null, false, { message: 'Incorrect password.' });
+          return done(null, false);
         }
 
         return done(null, user);

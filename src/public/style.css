@@ -41,6 +41,44 @@ html {
   }
 }
 
+.main-header-container {
+  width: 1536px;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 3rem;
+  align-items: center;
+  color: white;
+
+  & h1 {
+    font-size: 1.4rem;
+  }
+
+  & div {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.1rem;
+  }
+}
+
+.signout-btn {
+  background-color: rgba(255, 255, 255, 0.1);
+  height: 2rem;
+  display: flex;
+  gap: 0.3rem;
+  align-items: center;
+  color: white;
+  border-radius: 0.5rem;
+  border: none;
+  box-shadow: 0 0 2px white;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.signout-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
 .form {
   display: flex;
   flex-direction: column;

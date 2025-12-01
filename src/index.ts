@@ -1,4 +1,4 @@
-import express, { NextFunction } from 'express';
+import express from 'express';
 import session from 'express-session';
 import passport from 'passport';
 import path from 'path';

@@ -1,0 +1,28 @@
+<header class="header main-header">
+  <div class="main-header-container">
+      <h1>MAIN CHARACTERS ONLY</h1>
+      <div class="right-header">
+        <p>
+            Welcome,
+            <% if (!locals.user) { %>
+                Guest!
+            <% } else { %>
+                <%= locals.user.name %>
+            <% } %>
+        </p>
+        <p style="color: gold; display: flex;">
+            <% if (locals.user && locals.user.ismember) { %>
+                <img src="/assets/star.svg" width="25">
+                Member
+            <% } %>
+            <% if (locals.user && locals.user.isadmin) { %>
+                <img src="/assets/bolt.svg" width="25">
+                Admin
+            <% } %>
+        </p>
+        <a href="/log-out" style="text-decoration: none;">
+            <button class="signout-btn"><img src="/assets/signout.svg" width="25"> Sign Out</button>
+        </a>
+      </div>
+  </div>
+</header>

@@ -8,14 +8,6 @@
   </head>
 
   <body>
-    <%- include('partials/header') %>
-    <% if (locals.user) {%>
-      <h1>WELCOME BACK <%= user.name %></h1>
-      <h1>In current session, you have visited this page <%= views %> times.</h1>
-      <a href="/log-out">LOG OUT</a>
-    <% } else { %>
-      <h3>Log in</h3>
-      <a href="/log-out">LOG OUT</a>
-    <% } %>
+    <%- include('partials/main-page-header') %>
   </body>
 </html>
