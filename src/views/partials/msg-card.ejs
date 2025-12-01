@@ -4,10 +4,13 @@
         <div class="card">
           <h2><%= comment.title %></h2>
           <p><%= comment.message %></p>
-          <% if (locals.user) { %>
+          <% if (locals.user && (locals.user.ismember || locals.user.isadmin)) { %>
             <p>
-              <%= userName.name %>
+              <%= comment.name%>
+              <%= comment.surname %>
             </p>
+          <% } else { %>
+            <p style="font-weight: bold;">Confidential Info</p>
           <% } %>
         </div>
     <% }) %>

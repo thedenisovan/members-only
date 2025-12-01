@@ -68,34 +68,18 @@ export default class DbQuery {
 
   static getAllComments = async () => {
     try {
-      const { rows } = await pool.query(`SELECT * FROM comments`);
+      const { rows } = await pool.query(
+        `
+          SELECT name, surname, message, title FROM comments
+          INNER JOIN users
+          ON comments.creator_id = users.id;
+        `
+      );
 
       return { rows };
     } catch (err) {
       throw new Error(
         `Error while retrieving messages from the database ${err}`
-      );
-    }
-  };
-
-  static getCommentAuthorName = async (id: number | undefined) => {
-    if (typeof id !== 'number') return null;
-
-    try {
-      const { rows } = await pool.query(
-        `
-          SELECT name, surname FROM users
-          INNER JOIN comments
-          ON users.id = comments.creator_id
-          WHERE users.id = $1
-        `,
-        [id]
-      );
-
-      return rows[0];
-    } catch (err) {
-      throw new Error(
-        `Error while retrieving user name and surname from the database ${err}`
       );
     }
   };
