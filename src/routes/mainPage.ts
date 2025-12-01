@@ -1,12 +1,12 @@
 import { Router } from 'express';
 import type { Request, Response } from 'express';
+import DbQuery from '../db/query';
+import { NeonComments } from '../db/query';
 
 export const mainPage = Router();
 
-mainPage.get('/', (req: Request, res: Response) => {
-  // Count times each user has visited main page in given session
-  !req.session.views ? (req.session.views = 1) : req.session.views++;
-  res
-    .status(200)
-    .render('mainPage', { user: req.user, views: req.session.views });
+mainPage.get('/', async (req: Request, res: Response) => {
+  const { rows } = await DbQuery.getAllComments();
+
+  res.status(200).render('mainPage', { user: req.user, rows });
 });

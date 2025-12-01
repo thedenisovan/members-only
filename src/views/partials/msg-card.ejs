@@ -1,0 +1,8 @@
+<div class="card">
+  <% if (comments.length) { %>
+    <% comments.forEach(comment => { %>
+        <h2><%= comment.title %></h2>
+        <p><%= comment.message %></p>
+    <% }) %>
+  <% } %>
+</div>

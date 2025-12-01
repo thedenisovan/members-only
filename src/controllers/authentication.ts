@@ -8,7 +8,7 @@ passport.use(
   new LocalStrategy.Strategy(
     async (username: string, password: string, done) => {
       try {
-        const user: NeonUsers = await DbQuery.findUser(username); // Finds user with given email in db
+        const user: NeonUsers | null = await DbQuery.findUser(username); // Finds user with given email in db
         if (!user) {
           return done(null, false);
         }
