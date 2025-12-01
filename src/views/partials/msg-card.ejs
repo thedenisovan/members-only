@@ -1,8 +1,15 @@
-<div class="card">
-  <% if (comments.length) { %>
+<% if (comments.length) { %>
+  <div class="card-container">
     <% comments.forEach(comment => { %>
-        <h2><%= comment.title %></h2>
-        <p><%= comment.message %></p>
+        <div class="card">
+          <h2><%= comment.title %></h2>
+          <p><%= comment.message %></p>
+          <% if (locals.user) { %>
+            <p>
+              <%= userName.name %>
+            </p>
+          <% } %>
+        </div>
     <% }) %>
-  <% } %>
-</div>
+  </div>
+<% } %>

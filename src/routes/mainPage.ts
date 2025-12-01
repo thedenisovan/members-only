@@ -7,6 +7,11 @@ export const mainPage = Router();
 
 mainPage.get('/', async (req: Request, res: Response) => {
   const { rows } = await DbQuery.getAllComments();
+  let userName;
 
-  res.status(200).render('mainPage', { user: req.user, rows });
+  if (req.user) userName = await DbQuery.getCommentAuthorName(req.user.id);
+
+  console.log(userName);
+
+  res.status(200).render('mainPage', { user: req.user, rows, userName });
 });

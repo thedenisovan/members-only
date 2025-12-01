@@ -1,15 +1,5 @@
 import { pool } from './pool';
 import bcrypt from 'bcryptjs';
-import type { QueryResultRow } from 'pg';
-
-export interface NeonUsers {
-  name: string;
-  surname: string;
-  email: string;
-  pass: string;
-  isMember: string;
-  isAdmin: string;
-}
 
 export interface NeonComments {
   title: string;
@@ -26,7 +16,7 @@ export default class DbQuery {
     pass,
     isAdmin,
     isMember,
-  }: NeonUsers) => {
+  }: Express.User) => {
     const hashedPassword = await bcrypt.hash(pass, 10);
 
     const adminFlag = isAdmin?.toLowerCase() === 'odin';
@@ -64,7 +54,7 @@ export default class DbQuery {
     }
   };
 
-  static findUser = async (email: string): Promise<NeonUsers | null> => {
+  static findUser = async (email: string): Promise<Express.User | null> => {
     try {
       const { rows } = await pool.query(
         `SELECT * FROM users WHERE email = $1`,
@@ -77,8 +67,36 @@ export default class DbQuery {
   };
 
   static getAllComments = async () => {
-    const { rows } = await pool.query(`SELECT * FROM comments`);
+    try {
+      const { rows } = await pool.query(`SELECT * FROM comments`);
 
-    return { rows };
+      return { rows };
+    } catch (err) {
+      throw new Error(
+        `Error while retrieving messages from the database ${err}`
+      );
+    }
+  };
+
+  static getCommentAuthorName = async (id: number | undefined) => {
+    if (typeof id !== 'number') return null;
+
+    try {
+      const { rows } = await pool.query(
+        `
+          SELECT name, surname FROM users
+          INNER JOIN comments
+          ON users.id = comments.creator_id
+          WHERE users.id = $1
+        `,
+        [id]
+      );
+
+      return rows[0];
+    } catch (err) {
+      throw new Error(
+        `Error while retrieving user name and surname from the database ${err}`
+      );
+    }
   };
 }

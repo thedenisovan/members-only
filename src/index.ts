@@ -25,6 +25,20 @@ declare module 'express-serve-static-core' {
   }
 }
 
+declare global {
+  namespace Express {
+    interface User {
+      id?: number;
+      name: string;
+      surname: string;
+      email: string;
+      pass: string;
+      isMember: string;
+      isAdmin: string;
+    }
+  }
+}
+
 const app = express();
 const SECRET = process.env.NOT_FOR_YOU as string;
 

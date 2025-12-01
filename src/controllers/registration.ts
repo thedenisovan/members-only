@@ -1,10 +1,10 @@
 import type { Request, Response } from 'express';
-import type { NeonUsers } from '../db/query';
 import DbQuery from '../db/query';
 import { validationResult } from 'express-validator';
 
 export default async function registerUser(req: Request, res: Response) {
-  const { name, surname, email, pass, isAdmin, isMember }: NeonUsers = req.body;
+  const { name, surname, email, pass, isAdmin, isMember }: Express.User =
+    req.body;
 
   const result = validationResult(req);
 

@@ -2,17 +2,15 @@ import bcrypt from 'bcryptjs';
 import passport from 'passport';
 import LocalStrategy from 'passport-local';
 import DbQuery from '../db/query';
-import { NeonUsers } from '../db/query';
 
 passport.use(
   new LocalStrategy.Strategy(
     async (username: string, password: string, done) => {
       try {
-        const user: NeonUsers | null = await DbQuery.findUser(username); // Finds user with given email in db
+        const user = await DbQuery.findUser(username); // Finds user with given email in db
         if (!user) {
           return done(null, false);
         }
-
         const deserializedPassword = await bcrypt.compare(password, user.pass);
 
         if (!deserializedPassword) {
@@ -27,7 +25,7 @@ passport.use(
   )
 );
 
-passport.serializeUser((user: any, done) => {
+passport.serializeUser((user, done) => {
   done(null, user.email);
 });
 

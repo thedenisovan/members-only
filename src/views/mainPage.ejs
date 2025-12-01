@@ -8,8 +8,10 @@
   </head>
 
   <body>
-    <%- include('partials/main-page-header') %>
-    <p></p>
-    <%- include('partials/msg-card', {comments: rows})%>
+      <%- include('partials/main-page-header') %>
+      <p></p>
+      <main>
+        <%- include('partials/msg-card', {comments: rows, userName})%>
+      </main>
   </body>
 </html>
