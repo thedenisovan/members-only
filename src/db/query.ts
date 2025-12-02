@@ -1,5 +1,7 @@
+import dotenv from 'dotenv';
 import { pool } from './pool';
 import bcrypt from 'bcryptjs';
+dotenv.config();
 
 export interface NeonComments {
   title: string;
@@ -84,7 +86,9 @@ export default class DbQuery {
     }
   };
 
-  static deleteComment = async (id: number) => {
+  static deleteComment = async (id: number, pass: string) => {
+    if (pass !== process.env.PASS) return;
+
     await pool.query(
       `
         DELETE FROM comments

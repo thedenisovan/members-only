@@ -18,7 +18,9 @@ mainPage.get('/', async (req: Request, res: Response) => {
 
 mainPage.post('/', async (req, res, next) => {
   const { id } = req.body;
-  await DbQuery.deleteComment(id);
+  const { pass } = req.body;
+
+  await DbQuery.deleteComment(id, pass);
   res.redirect('mainPage');
   next();
 });

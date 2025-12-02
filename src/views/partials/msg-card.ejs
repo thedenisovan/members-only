@@ -1,3 +1,18 @@
+<!-- Script to ask user for additional password and set its value to req.body -->
+<script>
+  document.addEventListener('click', (e) => {
+    if (!e.target.classList.contains('del-btn')) return;
+
+    const form = e.target.closest('.del-form')
+    const pass = prompt('Enter sudo password to delete this message');
+
+    if (!pass) return;
+
+    form.querySelector('.pass-input').value = pass;
+    form.submit();
+  })
+</script>
+
 <% if (comments.length) { %>
   <div class="card-container" style="position: relative;">
     <% comments.forEach(comment => { %>
@@ -6,9 +21,10 @@
           style="background-color: <%= getColorByName(comment.name) %> transform: <%= getRandomAngle() %>"
         >
         <% if (locals.user && locals.user.isadmin) { %>
-          <form action="/mainPage" method="post">
+          <form class="del-form" action="/mainPage" method="post">
             <input value="<%= comment.id %>" type="number" name="id" style="display: none;">
-            <button class="del-btn">X</button>
+            <input class="pass-input" type="number" name="pass" style="display: none;">
+            <button type="button" class="del-btn">X</button>
           </form>
         <% } %>
           <div class="top-card">
