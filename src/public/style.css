@@ -316,6 +316,11 @@ main {
   justify-content: space-between;
 
   transition: 0.2s;
+
+  & hr {
+    border: 1px solid rgba(128, 128, 128, 0.247);
+    margin-bottom: 0.6rem;
+  }
 }
 
 .card:hover {
@@ -331,6 +336,28 @@ main {
 .msg {
   font-size: 1.1rem;
   color: rgb(65, 63, 63);
+}
+
+.del-btn {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  background-color: rgba(255, 0, 0, 0.733);
+  border: none;
+  color: white;
+  font-weight: bold;
+  border-radius: 10rem;
+  width: 30px;
+  height: 30px;
+  transition: 0.1s;
+}
+
+.del-btn:hover {
+  background-color: red;
+}
+
+.additional-info {
+  color: rgb(71, 71, 71);
 }
 
 /* Extra small devices (phones, 600px and down) */

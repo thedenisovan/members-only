@@ -22,6 +22,7 @@ declare module 'express-session' {
 declare module 'express-serve-static-core' {
   interface Request {
     myName: string;
+    id: number;
   }
 }
 declare global {

@@ -7,11 +7,15 @@
     <link rel="stylesheet" href="/style.css" />
   </head>
 
+  <script>
+    const name = 'Dainis'
+  </script>
+
   <body>
       <%- include('partials/main-page-header') %>
       <p></p>
       <main>
-        <%- include('partials/msg-card', {comments: rows, getRandomColor, getRandomAngle})%>
+        <%- include('partials/msg-card', {comments: rows, getColorByName, getRandomAngle})%>
       </main>
   </body>
 </html>

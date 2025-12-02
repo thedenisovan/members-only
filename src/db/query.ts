@@ -70,7 +70,7 @@ export default class DbQuery {
     try {
       const { rows } = await pool.query(
         `
-          SELECT name, surname, message, title FROM comments
+          SELECT comments.id, name, surname, message, title FROM comments
           INNER JOIN users
           ON comments.creator_id = users.id;
         `
@@ -82,5 +82,15 @@ export default class DbQuery {
         `Error while retrieving messages from the database ${err}`
       );
     }
+  };
+
+  static deleteComment = async (id: number) => {
+    await pool.query(
+      `
+        DELETE FROM comments
+        WHERE id = $1
+      `,
+      [id]
+    );
   };
 }

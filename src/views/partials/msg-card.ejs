@@ -1,11 +1,16 @@
 <% if (comments.length) { %>
-  <div class="card-container">
+  <div class="card-container" style="position: relative;">
     <% comments.forEach(comment => { %>
         <div 
-          onmouseover="this.style.backgroundColor = 'none'"
           class="card"
-          style="background-color: <%= getRandomColor() %> transform: <%= getRandomAngle() %>"
+          style="background-color: <%= getColorByName(comment.name) %> transform: <%= getRandomAngle() %>"
         >
+        <% if (locals.user && locals.user.isadmin) { %>
+          <form action="/mainPage" method="post">
+            <input value="<%= comment.id %>" type="number" name="id" style="display: none;">
+            <button class="del-btn">X</button>
+          </form>
+        <% } %>
           <div class="top-card">
             <h2 class="title"><%= comment.title %></h2>
             <p class="msg"><%= comment.message %></p>
