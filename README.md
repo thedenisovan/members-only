@@ -2,6 +2,10 @@
 
 Backend-focused learning project built to practice and demonstrate skills in server-side web development using **TypeScript**, **Express**, **EJS**, and **Passport.js**.
 
+## Preview the Web App
+You can live preview the website here: [Main Characters Only Application]()  
+*(If inactive for more than 15 minutes, it may take a moment to wake up.)*
+
 ## Overview
 A member-only web application where users can register, log in, post messages, and view message authors only when their access level permits it. The project focuses on authentication, authorization, and clean backend structure.
 
