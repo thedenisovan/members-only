@@ -7,12 +7,12 @@
     <link rel="stylesheet" href="/style.css" />
   </head>
 
-  <body>
+  <body style="display: flex; flex-direction: column;">
       <%- include('partials/main-page-header') %>
-      <main>
+      <main style="flex: 1;">
         <%- include('partials/main-section-header', {new: false}) %>
         <%- include('partials/msg-card', {comments: rows, getColorByName, getRandomAngle})%>
       </main>
-
+      <%- include('partials/footer') %>
   </body>
 </html>
