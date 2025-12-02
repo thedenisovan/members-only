@@ -1,0 +1,14 @@
+<header
+  class="new-note"
+  style="display: flex; justify-content: space-between; margin-top: 3rem"
+>
+  <div>
+    <h6>Community Notes</h6>
+    <p>Messages from the community</p>
+  </div>
+  <% if (!locals.new) { %>
+    <a href="/newMsg">
+    <button class="add-btn">+ Add Note</button>
+    </a>
+  <% } %>
+</header>

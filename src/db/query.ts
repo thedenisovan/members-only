@@ -6,8 +6,8 @@ dotenv.config();
 export interface NeonComments {
   title: string;
   message: string;
-  creation_time: string;
-  creator_id: number;
+  creation_time?: string;
+  id: number;
 }
 
 export default class DbQuery {
@@ -41,7 +41,7 @@ export default class DbQuery {
   static createNewComment = async ({
     title,
     message,
-    creator_id,
+    id = 98,
   }: NeonComments) => {
     try {
       await pool.query(
@@ -49,7 +49,7 @@ export default class DbQuery {
         INSERT INTO comments (title, message, creation_time, creator_id)
         VALUES ($1, $2, CURRENT_DATE, $3)  
       `,
-        [title, message, creator_id]
+        [title, message, id]
       );
     } catch (err) {
       throw new Error(`Error while inserting message in to database ${err}`);

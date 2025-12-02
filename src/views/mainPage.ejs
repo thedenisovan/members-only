@@ -9,8 +9,8 @@
 
   <body>
       <%- include('partials/main-page-header') %>
-      <p></p>
       <main>
+        <%- include('partials/main-section-header', {new: false}) %>
         <%- include('partials/msg-card', {comments: rows, getColorByName, getRandomAngle})%>
       </main>
 

@@ -61,6 +61,37 @@ html {
   }
 }
 
+.new-note {
+  align-items: center;
+
+  & p {
+    font-size: 1.2rem;
+    color: rgba(0, 0, 0, 0.733);
+  }
+
+  & button {
+    height: 2.4rem;
+    background-color: black;
+    color: white;
+    border-radius: 8px;
+    border: none;
+    width: 130px;
+    cursor: pointer;
+    transition: 0.1s;
+    box-shadow: 0 0 10px rgba(128, 128, 128, 0.37);
+  }
+}
+
+.add-btn:hover {
+  background-color: rgba(0, 0, 0, 0.842);
+}
+
+h6 {
+  color: var(--indigo-dark);
+  font-size: 1.6rem;
+  font-weight: 300;
+}
+
 .signout-btn {
   background-color: rgba(255, 255, 255, 0.1);
   height: 2rem;

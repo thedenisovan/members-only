@@ -9,6 +9,7 @@ import './controllers/authentication';
 import { signin } from './routes/signin';
 import { signup } from './routes/signup';
 import { mainPage } from './routes/mainPage';
+import { newMsg } from './routes/newMsg';
 
 const pgSession = require('connect-pg-simple')(session);
 dotenv.config();
@@ -77,6 +78,7 @@ app.set('view engine', 'ejs');
 app.use('/', signin);
 app.use('/signup', signup);
 app.use('/mainPage', mainPage);
+app.use('/newMsg', newMsg);
 
 app.get('/log-out', (req, res, next) => {
   req.logout((err) => {

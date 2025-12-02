@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Main Characters Only</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+
+  <style>
+    .new-msg-form {
+        display: flex; 
+        flex-direction: column;
+        background-color: white;
+        box-shadow: 0 0 10px rgba(128, 128, 128, 0.253);
+        padding: 1.4rem;
+        gap: 1rem;
+        border-radius: 10px;
+        margin-top: 1.4rem;
+
+        & h4 {
+            font-weight: 100;
+            font-size: 1.3rem;
+            color: rgba(0, 0, 0, 0.863);
+        }
+    }
+    #title {
+        height: 3rem;
+    }
+    #title,
+    #content {
+        border-radius: 6px;
+        border: 1px solid rgba(128, 128, 128, 0.658);
+    }
+    .post-btn {
+        background-color: black;
+        color: white;
+        border: none;
+    }
+    .cancel-btn {
+        background-color: white;
+        border: 1px solid rgba(128, 128, 128, 0.658);
+        margin-left: .7rem;
+    }
+    .post-btn,
+    .cancel-btn {
+        border-radius: 6px;
+        width: 120px;
+        height: 2.4rem;
+    }
+    button {
+        cursor: pointer;
+        transition: .2s;
+    }
+    .post-btn:hover {
+        background-color: rgba(0, 0, 0, 0.767);
+    }
+    .cancel-btn:hover {
+        background-color: rgb(224, 224, 224);
+    }
+  </style>
+
+  <body>
+      <%- include('partials/main-page-header') %>
+      <main>
+        <%- include('partials/main-section-header', {new: true}) %>
+        <form class="new-msg-form" method="post" action="/newMsg">
+            <h4>Create New Note</h4>
+            <input type="text" name="title" id="title" minlength="2" maxlength="20" placeholder="Title..." required>
+            <textarea rows="6" name="message" id="content" minlength="5" maxlength="100" placeholder="Write your message..." required></textarea>
+            <div>
+                <button class="post-btn">Post Note</button>
+                <a href="/mainPage"><button class="cancel-btn" type="button">Cancel</button></a>
+            </div>
+        </form>
+        <%- include('partials/msg-card', {comments: rows, getColorByName, getRandomAngle})%>
+      </main>
+
+  </body>
+</html>
