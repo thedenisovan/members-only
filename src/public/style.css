@@ -297,12 +297,29 @@ main {
 .card-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  margin: auto;
 }
 
 .card {
-  border: solid 1px;
-  width: 300px;
+  box-shadow: 0 0 15px rgba(128, 128, 128, 0.247);
+  min-height: 200px;
+  padding-top: 24px;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: space-between;
+}
+
+.title {
+  font-weight: 200;
+  font-size: 1.3rem;
+}
+
+.msg {
+  font-size: 1.3rem;
+  color: rgb(65, 63, 63);
 }
 
 /* Extra small devices (phones, 600px and down) */
@@ -333,16 +350,30 @@ main {
   .signout-svg {
     display: none;
   }
+
+  .status-container {
+    flex-direction: column;
+
+    & img {
+      display: none;
+    }
+  }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 768px) {
   .card-container {
     grid-template-columns: 1fr 1fr;
+    row-gap: 1rem;
   }
 
-  main {
-    width: 750px;
+  main,
+  .main-header-container {
+    max-width: calc(768px - 32px);
+  }
+
+  .card {
+    width: 356px;
   }
 }
 
@@ -352,8 +383,13 @@ main {
     grid-template-columns: 1fr 1fr 1fr;
   }
 
-  main {
-    width: 950px;
+  main,
+  .main-header-container {
+    max-width: 1024px;
+  }
+
+  .card {
+    width: 315px;
   }
 }
 
@@ -363,13 +399,30 @@ main {
     grid-template-columns: repeat(4, 1fr);
   }
 
-  main {
-    width: 1536px;
+  main,
+  .main-header-container {
+    max-width: 1280px;
+  }
+
+  .card {
+    width: 294px;
   }
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1536px) {
+  .card-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  main,
+  .main-header-container {
+    max-width: 1536px;
+  }
+
+  .card {
+    width: 358px;
+  }
 }
 
 /* 1. Use a more-intuitive box-sizing model */

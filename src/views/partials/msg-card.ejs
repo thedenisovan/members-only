@@ -1,17 +1,26 @@
 <% if (comments.length) { %>
   <div class="card-container">
     <% comments.forEach(comment => { %>
-        <div class="card">
-          <h2><%= comment.title %></h2>
-          <p><%= comment.message %></p>
+        <div 
+          class="card"
+          style="background-color: <%= getRandomColor() %>"
+        >
+          <div class="top-card">
+            <h2 class="title"><%= comment.title %></h2>
+            <p class="msg"><%= comment.message %></p>
+          </div>
+          <div class="bottom-card">
+          <hr>
           <% if (locals.user && (locals.user.ismember || locals.user.isadmin)) { %>
-            <p>
+            <p class="additional-info">
+              -
               <%= comment.name%>
               <%= comment.surname %>
             </p>
           <% } else { %>
-            <p style="font-weight: bold;">Confidential Info</p>
+            <p class="additional-info" >- Confidential Info</p>
           <% } %>
+          </div>
         </div>
     <% }) %>
   </div>
