@@ -12,6 +12,7 @@ mainPage.get('/', async (req: Request, res: Response) => {
     user,
     rows,
     getRandomColor,
+    getRandomAngle,
   });
 });
 
@@ -32,4 +33,12 @@ function getRandomColor(): string {
     default:
       return '#FED7AA;';
   }
+}
+
+function getRandomAngle(): string {
+  const luckyNum = Math.random();
+
+  const returnValue = luckyNum > 0.5 ? 'rotate(2deg);' : 'rotate(-2deg);';
+
+  return returnValue;
 }

@@ -2,8 +2,9 @@
   <div class="card-container">
     <% comments.forEach(comment => { %>
         <div 
+          onmouseover="this.style.backgroundColor = 'none'"
           class="card"
-          style="background-color: <%= getRandomColor() %>"
+          style="background-color: <%= getRandomColor() %> transform: <%= getRandomAngle() %>"
         >
           <div class="top-card">
             <h2 class="title"><%= comment.title %></h2>

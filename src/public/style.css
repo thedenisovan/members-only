@@ -295,8 +295,12 @@ main {
 }
 
 .card-container {
+  margin-top: 3rem;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+
+  row-gap: 2rem !important;
+  column-gap: 2rem !important;
 }
 
 .card {
@@ -310,15 +314,22 @@ main {
   flex-direction: column;
 
   justify-content: space-between;
+
+  transition: 0.2s;
+}
+
+.card:hover {
+  transform: rotate(0) scale(1.02) !important;
+  cursor: pointer;
 }
 
 .title {
   font-weight: 200;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
 }
 
 .msg {
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   color: rgb(65, 63, 63);
 }
 
