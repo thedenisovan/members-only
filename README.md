@@ -31,7 +31,8 @@ A member-only web application where users can register, log in, post messages, a
 - **TypeScript**
 - **EJS (Server-side rendering)**
 - **Passport.js (Authentication)**
-- **Database** (PostgreSQL)
+- **Database** (PostgreSQL, Neod)
+- **Deployement** (Render)
 
 ## Project Goals
 
